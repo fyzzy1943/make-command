@@ -1,0 +1,20 @@
+{
+    "name": "fyzzy1943/make-console",
+    "description": "make boost",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "forDawn",
+            "email": "fyzzy1943@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "autoload": {
+    	"psr-4": {
+    		"FyzzyMake\\": "src/"
+    	}
+    }
+}
