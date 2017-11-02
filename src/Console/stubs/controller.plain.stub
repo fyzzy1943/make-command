@@ -3,9 +3,9 @@
 namespace DummyNamespace;
 
 use Illuminate\Http\Request;
-use DummyRootNamespaceHttp\Controllers\Controller;
+use DummyRootNamespaceHttp\Controllers\BaseController;
 
-class DummyClass extends Controller
+class DummyClass extends BaseController
 {
     public function __construct()
     {
