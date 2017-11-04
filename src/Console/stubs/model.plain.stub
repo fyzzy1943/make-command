@@ -2,9 +2,13 @@
 
 namespace DummyNamespace;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Modules\BaseModel;
 
-class DummyClass extends Model
+class DummyClass extends BaseModel
 {
-
+    protected $table = '';
+    
+    protected $fillable = [
+        
+    ];
 }
