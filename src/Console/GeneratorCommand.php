@@ -198,6 +198,8 @@ abstract class GeneratorCommand extends Command
      */
     protected function getNameInput()
     {
-        return trim($this->argument('name'));
+        $name = trim($this->argument('name'));
+
+        return ends_with($name, $this->type) ? $name : $name.$this->type;
     }
 }
