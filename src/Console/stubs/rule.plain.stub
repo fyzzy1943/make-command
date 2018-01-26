@@ -8,15 +8,11 @@ class DummyClass extends RequestRule
 {
     public function rules()
     {
-        return [
-
-        ];
+        return [];
     }
 
     public function messages()
     {
-        return [
-
-        ];
+        return [];
     }
 }
