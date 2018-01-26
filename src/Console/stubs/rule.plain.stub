@@ -1,0 +1,22 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Http\RequestRules\RequestRule;
+
+class DummyClass extends RequestRule
+{
+    public function rules()
+    {
+        return [
+
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+
+        ];
+    }
+}

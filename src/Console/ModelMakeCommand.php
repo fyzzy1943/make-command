@@ -21,9 +21,7 @@ class ModelMakeCommand extends GeneratorCommand
 
     protected function getDefaultNamespace($rootNamespace)
     {
-        $group = explode('/', str_replace('\\', '/', trim($this->argument('name'))))[0];
-
-        return $rootNamespace.'\Modules\\'.$group.'\Models';
+        return $rootNamespace.'\Modules';
     }
 
     protected function getStub()
@@ -33,11 +31,13 @@ class ModelMakeCommand extends GeneratorCommand
 
     protected function getNameInput()
     {
-        $name = trim($this->argument('name'), " \t\n\r\0\x0B\\/");
-
-        $name = str_replace('\\', '/', $name);
-
-        $name = Str::contains($name, '/') ? mb_substr($name, mb_stripos($name, '/') + 1) : $name;
+        $name = trim($this->argument('name'));
+        $name = substr_replace(
+            $name,
+            '/' . $this->type,
+            mb_stripos($name, '/'),
+            0
+        );
 
         return $name;
     }

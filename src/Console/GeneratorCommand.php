@@ -15,9 +15,24 @@ use Symfony\Component\Console\Input\InputArgument;
 
 abstract class GeneratorCommand extends Command
 {
+    /**
+     * @var Filesystem
+     */
     protected $files;
 
+    /**
+     * The type of class being generator.
+     *
+     * @var string
+     */
     protected $type;
+
+    /**
+     * 是否强制后缀
+     *
+     * @var boolean
+     */
+    protected $shouldSuffix = false;
 
     /**
      * Create a new generatorCommand constructor.
@@ -47,21 +62,28 @@ abstract class GeneratorCommand extends Command
      */
     public function fire()
     {
+        /*
+         * 首先会获得完整的类名（包括namespace）
+         * 根据类名获得文件路径
+         */
         $name = $this->qualifyClass($this->getNameInput());
-
 //        dd($name);
-
         $path = $this->getPath($name);
+//        dd($path);
 
-        // 检查文件是否存在，存在则放弃创建
+        /*
+         * 之后检查文件是否存在，如果存在则放弃创建
+         */
         if ($this->files->exists($path)) {
-            $this->error('File already exists.');
+            $this->error($path . ' :File already exists.');
 
             return false;
         }
 
+        /*
+         * 通过检查之后，首先创建目录，之后创建文件
+         */
         $this->makeDirectory($path);
-
         $this->files->put($path, $this->buildClass($name));
 
         $this->info($this->type . ' created successfully.');

@@ -9,6 +9,8 @@
 namespace FyzzyMake\Console;
 
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
+use Symfony\Component\Console\Input\InputOption;
 
 class ControllerMakeCommand extends GeneratorCommand
 {
@@ -33,6 +35,67 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     protected $type = 'Controller';
 
+    public function fire()
+    {
+        if (false == parent::fire()) {
+            return;
+        }
+
+        if ($this->option('service') || $this->option('all')) {
+            $this->createService();
+        }
+
+        if ($this->option('repository') || $this->option('all')) {
+            $this->createRepository();
+        }
+
+        if ($this->option('model') || $this->option('all')) {
+            $this->createModel();
+        }
+    }
+
+    /**
+     * Create a service file for the model.
+     *
+     * @return void
+     */
+    protected function createService()
+    {
+//        $name = $this->getNameInput();
+//
+//
+//
+//        if (ends_with($name, $this->type)) {
+//            $baseName = str_replace_last($this->type, '', $name);
+//            dd($baseName);
+//        }
+//
+//        $a = class_basename($this->argument('name'));
+//        var_dump($a);
+//        $controller = Str::studly($a);
+//        dd($controller);
+    }
+
+    /**
+     * Create a repository file for the model.
+     *
+     * @return void
+     */
+    protected function createRepository()
+    {
+
+    }
+
+    /**
+     * Create a model file for the model.
+     *
+     * @return void
+     */
+    protected function createModel()
+    {
+
+    }
+
     /**
      * Get the default namespace for the class.
      *
@@ -47,5 +110,27 @@ class ControllerMakeCommand extends GeneratorCommand
     protected function getStub()
     {
         return __DIR__ . '/stubs/controller.plain.stub';
+    }
+
+    /**
+     * Get the console command options.
+     *
+     * @return array
+     */
+    protected function getOptions()
+    {
+        return [
+            ['all', 'a', InputOption::VALUE_NONE,
+                'Create new service, repository, model file for the controller.'],
+
+            ['service', 's', InputOption::VALUE_NONE,
+                'Create a new service file for the controller.'],
+
+            ['repository', 'r', InputOption::VALUE_NONE,
+                'Create a new repository file for the controller.'],
+
+            ['model', 'm', InputOption::VALUE_NONE,
+                'Create a new model file for the controller.'],
+        ];
     }
 }

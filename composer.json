@@ -1,8 +1,9 @@
 {
     "name": "fyzzy1943/make-command",
-    "description": "make boost",
+    "description": "life is short",
     "type": "library",
     "license": "MIT",
+    "homepage": "https://github.com/fyzzy1943/make-command",
     "authors": [
         {
             "name": "forDawn",
@@ -10,11 +11,23 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9"
+        "php": ">=5.5.9",
+        "illuminate/container": "~5.4",
+        "illuminate/console": "~5.4",
+        "illuminate/support": "~5.4",
+        "illuminate/filesystem": "~5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~5.0"
     },
     "autoload": {
     	"psr-4": {
     		"FyzzyMake\\": "src/"
     	}
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FyzzyMake\\Tests\\": "tests/"
+        }
     }
 }
