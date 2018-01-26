@@ -12,7 +12,7 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
 
-class ControllerMakeCommand extends GeneratorCommand
+class RequestRuleMakeCommand extends GeneratorCommand
 {
     /**
      * The console command name.

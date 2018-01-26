@@ -8,10 +8,11 @@
 
 namespace FyzzyMake;
 
+use Illuminate\Support\ServiceProvider;
 use FyzzyMake\Console\ModelMakeCommand;
 use FyzzyMake\Console\RepositoryMakeCommand;
+use FyzzyMake\Console\RequestRuleMakeCommand;
 use FyzzyMake\Console\ServiceMakeCommand;
-use Illuminate\Support\ServiceProvider;
 use FyzzyMake\Console\ControllerMakeCommand;
 
 class MakeConsoleServiceProvider extends ServiceProvider
@@ -31,6 +32,7 @@ class MakeConsoleServiceProvider extends ServiceProvider
                 ServiceMakeCommand::class,
                 RepositoryMakeCommand::class,
                 ModelMakeCommand::class,
+                RequestRuleMakeCommand::class,
             ]);
         }
     }
