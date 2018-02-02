@@ -39,6 +39,6 @@ class ModelMakeCommand extends GeneratorCommand
             0
         );
 
-        return $name;
+        return ends_with($name, $this->type) ? $name : $name.$this->type;
     }
 }

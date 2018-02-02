@@ -39,6 +39,6 @@ class RepositoryMakeCommand extends GeneratorCommand
 
         $name = Str::contains($name, '/') ? mb_substr($name, mb_stripos($name, '/') + 1) : $name;
 
-        return $name;
+        return ends_with($name, $this->type) ? $name : $name.$this->type;
     }
 }
